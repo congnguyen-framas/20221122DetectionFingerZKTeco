@@ -80,6 +80,8 @@ namespace FingerOrintDetection
                         BitmapFormat.GetBitmap(FPBuffer, mfpWidth, mfpHeight, ref ms);
                         Bitmap bmp = new Bitmap(ms);
                         this.picFPImg.Image = bmp;
+                        //Show capture fingerprint encrypt base64
+                        txtFingerprintCode.Text = $"Fingerprint:{Environment.NewLine}{zkfp2.BlobToBase64(CapTmp, cbCapTmp)}";
 
                         if (IsRegister)
                         {
@@ -130,6 +132,7 @@ namespace FingerOrintDetection
                                 textRes.Text = "Please register your finger first!";
                                 return;
                             }
+
                             if (bIdentify)//Xác thực vân tay
                             {
                                 int ret = zkfp.ZKFP_ERR_OK;
@@ -189,6 +192,9 @@ namespace FingerOrintDetection
 
         private void bnIdentify_Click(object sender, EventArgs e)
         {
+            IsRegister = false;
+            cbRegTmp = cbCapTmp;
+
             if (!bIdentify)
             {
                 bIdentify = true;
@@ -212,6 +218,9 @@ namespace FingerOrintDetection
 
         private void bnVerify_Click(object sender, EventArgs e)
         {
+            IsRegister = false;
+            cbRegTmp = cbCapTmp;
+
             if (bIdentify)
             {
                 bIdentify = false;
@@ -363,7 +372,25 @@ namespace FingerOrintDetection
             if (zkfp2.DBAdd(mDBHandle, iFid, FPBufferTest) == zkfp.ZKFP_ERR_OK)
             {
                 iFid += 1;
+            } 
+            FPBufferTest = zkfp2.Base64ToBlob("Sr1TUzIxAAAD/v8ECAUHCc7QAAAj/2oBAABZgyMklP4BAfRkmQDVAVKadwDeAOhkHQA3/0hL8QAVAfI4ff69AGJkyABhAA" +
+                "+aswCcAHhkYwCR/v5kVgBAAYldA/9RATI0/wCzAI7AyAD7ACRkaAAc/0lenAC8AD5kjP60APNkYwDEAVuarABGAcpYaQBR/99QtwBZAb9Q8f5IATY19wCXAUbMjQC" +
+                "AAPVkBQBK/gFksAATAZJkov7HAG5kpwD9Acug3gDGAItRrgAd/01kggBBAfxMVv7nAOFkBwHeATLe/gA7ATUimABM/0lHYABdAfov1v5IAIBkyaRvnLVQ7Fw1/kkK1w" +
+                "lhd++SVhRCFtMWVvSn8n4GEXHnaGmDBJYKDp6CYHgakGN+nYgaDFP2ZvprDA4CxO4k/A4Dlg9bg4+Pe824InbsBPPV+kSDt3EYCAaYofg4ka54XwzWeP5yPe9m+uRR" +
+                "ZBe4Z5gbn2G0sba1dPOYBCr/NRboEwkSY/ikgsoFgYHjD153d+2wCsZkwHd0fp3z6ACBg/HvW4JElJYX6vSOApsXPYy78vLvzohT+YB92P6a/KP9bAGK+5jycQjp/O" +
+                "8S+gb39CYLgYHm91h9+7u7iQsg8AEB1Rq6BgC7Sb/Bwj7AAwDbSQk6DQOKafRc/cD9B/3Czw4A/nOTg71+wzzBwQ8A/XlKwcEBgnzAdAMBwHoUAQ0AkID0wP3+/LX+" +
+                "DwETd5cFwXw6/8PAwMFszwCqcftAQEYJAGSTd4p/wQsAqZTFwEMBR/8LALKauMJ3PGvACQC6nMbALABFCwCynnSiwcM8wWAIAMyjw/47Pv4GAMSlgE7DC/7NqAz/Rk" +
+                "HXARpilsB4iHL+AWrD7QAYpZrCZgSLdYHAVg0AkrUxPP2+Rv8HAHu8osHCPm4GAJ28+vX/Bv5/wGJkBABax3J8DgDcyIn/B4PAgFvBBgDkydM+/OoAFOegccAEjMGH" +
+                "clkEAMP6SakJ/sr6Gvz/Kp4IEy9nzsHBwcFdEQOZ/9xAwCr/O//9AToFEF8DWgf+w/sRYwZWwU3IEMn2lsPFwcTEQMGW6gAR+6TBwATDajzCfP/Cwv1RCRNgDO38+v" +
+                "ojOxMTEQ6pwcORxAXEh3mBCBDNEDHmQQnulxJXksLDAcbF9hGbFFPDjA3FB+6xFV6pExHBFa48wYjDhpPCr8AH7vEXOk8DEDAXMgAFEGshUHjAENTLSD0XEREdaMHD" +
+                "fomCd8JyU8kQnry2/h31+/w6/Pj9EbFC18QD1bIgvfwZEQ5KsJDCf2yWiID/wYPGEPO1R8AYEORnDG2BP8LDwsPDwgfDwj/D/8HCwlKHABq9AAIBALQB40cD/wGoAT7" +
+                "IAMUZRqw=");
+            //zkfp2.DBMerge(mDBHandle, FPBufferTest, FPBufferTest, FPBufferTest, RegTmp, ref cbRegTmp);
+            if (zkfp2.DBAdd(mDBHandle, iFid, FPBufferTest) == zkfp.ZKFP_ERR_OK)
+            {
+                iFid += 1;
             }
+
             //dat
             FPBufferTest = zkfp2.Base64ToBlob("SxtTUzIxAAACWFsECAUHCc7QAAAaWWkBAAAAgoUKf1h7AAcOkQC4AIVWeACeAIEPkgCqWP4PwgC2AOYPbVjWAHoPMgAvAF" +
                 "ZXyAD1ACsPpwD/WFoORwAgAfoPg9m/idcLgYGTCmHTd4XGfdr+s4Gt3V77m/sDnyqnVHq2fc/7P/maFyGHEgvns9fTM+KAR7YJHufz79LHRlghLQEBwBVqBQL5GBDAW" +
