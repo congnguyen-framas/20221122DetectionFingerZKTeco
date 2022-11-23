@@ -404,6 +404,38 @@ namespace FingerOrintDetection
             {
                 iFid += 1;
             }
+            //Thi
+            FPBufferTest = zkfp2.Base64ToBlob("S59TUzIxAAAC3OEECAUHCc7QAAAa3WkBAAAAggEVsNwZABkPYACBAPjThgBaAHwPegBZ3J0PWAB5AJcPv9x/AKMPmABHAIvTMwCNAE" +
+                "sPjQCd3EQP0wCmAPwPgNy/ACUPygADAETTnADIAK0PYQDW3KIPrgDlAEwPfdztABcOvwA+AOPSYgD9ACIPUwAJ3Y8PgwAMAcMPgNwgAZ4Po38Gn9X/n4PPqqtz8/eYWwbiKvlH" +
+                "FqIigNKfC/daogmfHQmw9+mqD9vulAsgJw5T2f8O9pYjlCj2mLOPaXuzhp3MBwyuppq/OAxjV/8lifgJHbOCozUcq6LdphAT9JBWRFsSV0tAjwxwwYKEcYlS8F96e6W8aTbwpZkHE" +
+                "IWgf7AdICkBxL8a2QoASQf9ZTvBaR0GAKMMEMI5wf8jBwC1GRpHOhAC4hztNf88/olEEtw5LOkzSvwF/v0c/kMIAGRAMf7/7P4IAFxGaQf/wB5dEQBnRvfmPf8j/sDAwf091gAol" +
+                "N87/sD+//X//Ig3FAArVOCDMTYd/P84ShAARlaBfMCMwsD+gwcQAhxWoHzDecIEb5rZAYtaEP8p0wCGgYGdw4xmfAXEwqjDCADCXykF/0YcFABcdef/OP0h7/4z/yAXEsVUe4t/w" +
+                "nHAw4G2wxHcv3qrwsKLXpPDrH4PAFh9UENZgrLDEACWfpd1w8AfbXGFCQC/Ry39I//AwioPAFGDjh/Hw8TBwsIFwsIew8EHAJuG4jsr2gExkEzB/0oEAlqYJDEQAEdmRnodgsDCe" +
+                "ZQExYah7IAHANSpOgXAwhz4JACDwisGwscbx8OLw4bDAMHHTn/BwnVwo8wAyBVB/f39/P7eBQJ81JcjCAB6Z0PBHMLDwcUMAETeq/L+/Pj3/DPKAKtgtozExsbFB8KKHAcAf/Ainw" +
+                "EGAuz4KcDCWQXFz/m8/S8DACn76MEGzGUAInMHEAoFZSIo/QUQvx+o/S3c");
+            //zkfp2.DBMerge(mDBHandle, FPBufferTest, FPBufferTest, FPBufferTest, RegTmp, ref cbRegTmp);
+            if (zkfp2.DBAdd(mDBHandle, iFid, FPBufferTest) == zkfp.ZKFP_ERR_OK)
+            {
+                iFid += 1;
+            }
+            //Tuan
+            FPBufferTest = zkfp2.Base64ToBlob("TQVTUzIxAAAERkYECAUHCc7QAAAcR2kBAAAAhOskmUYhAHgOjQDhAPlIygAtAIgPTAAxRgUOlQBHAL4PZ0ZLAP4OdACOAHhIswBOAAkPugBL" +
+                "RvoOqwBSAEQPxkZfAA0PPwChAGVJhQBtAHEPHwBzRh0PmQCTAL0PEkaVAFsP5ABcACpJswCaACcPCwClRi8PhQCtAJQOXEazAEoPpgABAE9IwwDTAEsPJwDbRkAPLwDkAIcPx0byAFcP" +
+                "2QA+AEpJMQD/AMIPhQAFRzgPcQAIAdIPjEYbAfwPGwDgAbdJPgA0Aa8PSgAwR44PpgA9ASsPPkZLAZ8PgXysd1a4eITN+LqFk4KDVlYIRQiliggLqTx4ghn+hYRMB2q5FYOJgOZ4JYqd" +
+                "uAOQFIN5gpD77DyUChV3FQbMj5K3B2cP538LD3i6sOP7BhGa8XfzERVnKLYLA//+E19dxAIKFdMJILNhvaffRQLdC9sXDp5LCq4LMvtSCyORSwDO/gInDwByskcNjffO+W/tecVrCR/7" +
+                "OQovDBZfwPoBD98EAIh5xRcTzXjy+YokgVny4JOJuW/k569W3wai8/MU2BJmuJJ5AaKpl155JSQ29DfbrfJC7KMtTNp0tQ0g/wEGNSCRBAB7BkVZA0aBDXpwWQzFmRrGd3Z6wgQAZCECe" +
+                "w8AzSKQwgRfcxPBEgDHMImqZnCGh8DAwQcASDP5eDgMAIU0er3AxYaGwAgAjjnFQ/omBABxTnrDqQQExE8Awf4FAHJODbk+AwCvUw8HEgTuVIDAwIaABcL6OHsUAOtalgSExBSSwWZrBQA" +
+                "AYAiGMAYAOmRkrsABRj9oYMFJEsWAaDySwnHAa4RLCwTObADAMvvBjhkExnB0w2eLcqn/x4eSwcCcAwAYeB65GwD3hKKTiMHEhsDEccHAwgVixSgTAJWQgMRewvuCW8PBwsGlwwCZ1RL8" +
+                "MCgAlFB6m859wZHEwMYHiMeGw4TCwMOTWsGTQgEXmlzBwsEA4NomOBEAtp3h/vt3/sAn/v366RIEjZyeiMLBlwTCxYd3wh4A955sf5SHw2rEwIvBBcL7hP7AwcP/n80A1uQoNUcHAM5gMD" +
+                "lzHQCCslfDB5XBgKbDw8HCxAbGx4XCwsDDwsEFBATTtSf6/RAAkbZLhFfE/8LBnQGOEUZbtkx4gZMBw4mGw8DEwQQAVLdN0AUAjLlQn+cAofmqxsrFxMIGxcKBxcTDwsPEAMbHgsPBw8HC" +
+                "xAHGxYPDwcIDAKkCQ/leAfPLsWTDvIDE34h+fAoAxRJGLbv/+//6AwAn5ES5BxDfEEz9ODgDRirnQ3ChHsXw5/uCesCXhsJJfMU0/sKSBgDDMlbEuv/8BxDbAoz++XUPED0EQJIHwmjSww" +
+                "8QQwQ6B8GWhsKTwMHDB9UEFnbCa8IEEB/sJFhBEQcrJMFpBgMURC00wQQQQ/0egEUREEAiwgXVr2Q7VAA=");
+            //zkfp2.DBMerge(mDBHandle, FPBufferTest, FPBufferTest, FPBufferTest, RegTmp, ref cbRegTmp);
+            if (zkfp2.DBAdd(mDBHandle, iFid, FPBufferTest) == zkfp.ZKFP_ERR_OK)
+            {
+                iFid += 1;
+            }
+
             cbRegTmp = 100;
 
             //int fid1 = 0, score1 = 0;
