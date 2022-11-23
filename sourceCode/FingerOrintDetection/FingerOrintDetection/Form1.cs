@@ -437,10 +437,6 @@ namespace FingerOrintDetection
             }
 
             cbRegTmp = 100;
-
-            //int fid1 = 0, score1 = 0;
-
-            //var _res = zkfp2.DBIdentify(mDBHandle, CapTmp, ref fid1, ref score1);
         }
     }
 }
