@@ -188,6 +188,8 @@ namespace FingerOrintDetection
         private void Form1_Load(object sender, EventArgs e)
         {
             FormHandle = this.Handle;
+
+
         }
 
         private void bnIdentify_Click(object sender, EventArgs e)
@@ -228,6 +230,11 @@ namespace FingerOrintDetection
             }
         }
 
+        /// <summary>
+        /// add thêm fingerprint.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bnEnroll_Click(object sender, EventArgs e)
         {
             if (!IsRegister)
@@ -240,7 +247,11 @@ namespace FingerOrintDetection
         }
 
 
-
+        /// <summary>
+        /// khởi tạo ban đầu.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bnInit_Click(object sender, EventArgs e)
         {
             cmbIdx.Items.Clear();
@@ -271,6 +282,11 @@ namespace FingerOrintDetection
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bnFree_Click(object sender, EventArgs e)
         {
             zkfp2.Terminate();
@@ -334,6 +350,11 @@ namespace FingerOrintDetection
             textRes.Text = "Open succ";
         }
 
+        /// <summary>
+        /// xóa hết fingerprint.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnClear_Click(object sender, EventArgs e)
         {
             //for (int i = 0; i < iFid; i++)
@@ -341,7 +362,7 @@ namespace FingerOrintDetection
             //    zkfp2.DBDel(mDBHandle, i);
             //}
 
-            if(zkfp2.DBClear(mDBHandle) == zkfp.ZKFP_ERR_OK)
+            if (zkfp2.DBClear(mDBHandle) == zkfp.ZKFP_ERR_OK)
             {
                 iFid = 1;
                 textRes.Text = "Cleared all fingerprint!";
@@ -356,87 +377,89 @@ namespace FingerOrintDetection
         private void btnAddFinger_Click(object sender, EventArgs e)
         {
             //Cong
-            FPBufferTest = zkfp2.Base64ToBlob("Sp9TUzIxAAAD3OEECAUHCc7QAAAj3WoBAABkgwEjYtzgAPxkkAB+AAm4OADZAGZkmAAX3QFkrADYAEtkjtyVAA" +
-                            "lksgBkAIm4DgDkAOVkSQBM3VFSPQBzALVko9xaAVAzhwCXAPm4XwD9APpk+ADd3O9kfACtAMJkTNwOAVxkfgDkASy4xADcABlcZgAz3ThRXQBJARdhWdxv" +
-                            "APlkEwD2AU+4awBYAPhkbwBU3AJPSQDuAKRkodzsAItkjwDIARy4jQCxAIVkuQCW3HtkJgCxACpkK9wnAU1kMwBAAPK4wAA2ATg6/QBZ3TBFpwBgAQAo8k" +
-                            "PIBwoRKIfUBjXeQXpBByZu1KRC1pPRRQb5dlOG9ky4h9IEhoKjBl1fk4OX+G/6jAJJUA8aZYEJezp5S1LIAvYb/gRL+fDdyP7loiGb/Yq6UZf1hYQ5jlD+N" +
-                            "oAAZt79LRMnMWEm7I7Wkh+TlwChNtsOHqK3hEqlYt8Ai/ILHQKSHiAv4AOCAPeJwwn809L/xXU5awD/yiJPbeZ2vfP/lY02LX+FgL1/wHBKqjP0wotfAHoB" +
-                            "nt4f82seZYG/+9zY0wCjdKfp+2LwOgbmVHZWdL6MsGvm3QMgOAHHFRm0BgB8RW1KlwQDSEt3awUAo5J9ZtoBZFtxwFLOAMK7h/95Tl0KxV1tKz89XAMAO7d" +
-                            "0wtgBPXdtPQ3FNIAx/j7/REwOxTaLKFL//v9dN8YALVV1wgcAkJLDN1nXAXmTfWnBBcP9pwIAkJgMwcIAeUV7am0RANlTkMOiwYFpWcASxduiTMFqwsH+ww" +
-                            "XAfR2ABgCTsgaHwAjcirSDeMLBosAF3JO5Bv5bC8WKv1rDwXjCWQfFkr3QREsJAKvWVW+LHRAAwNmTagTBih1dwXAJAKgfifwdkGAGADfconjD2QGw3BbAN" +
-                            "9YAAArd//1CRsD1wTsdEwDUuoxiBP/AtnWEwAsAYiX3/PT+OMAHADomZ8IdwGYHAE7sKP04IwgARu1nwb3Awx4KAGH59/47/y3hCABi/vr+O//9Iy8KEFoA" +
-                            "awWXdhwEEIsKkKDQENTYn2nBwWyJOolnHQYQkwwX/vb+C8xND2SSgAjVkhL8/jAgCBBP1mCRHIwKEGET+jn9ICA/ChB4HIkBxcAfwMPEwQQQRSAjwRIQ1Rug" +
-                            "wavCch7Dwm7C/8LCEH34LPz//DUF1WkkuMXEwQYQKe1QdB4EEHEsOiHBEG/vSDoEEKUz9S0HzBQ1SWAWEAglrh9ukMGdwMIH/8FVwRIQoVbDR5LHGMLDwJef" +
-                            "DtVZa2zB/CT5+Pnm/VGeARJDAQEBxWwC7kwAABJFUg==");
-            //zkfp2.DBMerge(mDBHandle, FPBufferTest, FPBufferTest, FPBufferTest, RegTmp, ref cbRegTmp);
-            if (zkfp2.DBAdd(mDBHandle, iFid, FPBufferTest) == zkfp.ZKFP_ERR_OK)
-            {
-                iFid += 1;
-            } 
-            FPBufferTest = zkfp2.Base64ToBlob("Sr1TUzIxAAAD/v8ECAUHCc7QAAAj/2oBAABZgyMklP4BAfRkmQDVAVKadwDeAOhkHQA3/0hL8QAVAfI4ff69AGJkyABhAA" +
-                "+aswCcAHhkYwCR/v5kVgBAAYldA/9RATI0/wCzAI7AyAD7ACRkaAAc/0lenAC8AD5kjP60APNkYwDEAVuarABGAcpYaQBR/99QtwBZAb9Q8f5IATY19wCXAUbMjQC" +
-                "AAPVkBQBK/gFksAATAZJkov7HAG5kpwD9Acug3gDGAItRrgAd/01kggBBAfxMVv7nAOFkBwHeATLe/gA7ATUimABM/0lHYABdAfov1v5IAIBkyaRvnLVQ7Fw1/kkK1w" +
-                "lhd++SVhRCFtMWVvSn8n4GEXHnaGmDBJYKDp6CYHgakGN+nYgaDFP2ZvprDA4CxO4k/A4Dlg9bg4+Pe824InbsBPPV+kSDt3EYCAaYofg4ka54XwzWeP5yPe9m+uRR" +
-                "ZBe4Z5gbn2G0sba1dPOYBCr/NRboEwkSY/ikgsoFgYHjD153d+2wCsZkwHd0fp3z6ACBg/HvW4JElJYX6vSOApsXPYy78vLvzohT+YB92P6a/KP9bAGK+5jycQjp/O" +
-                "8S+gb39CYLgYHm91h9+7u7iQsg8AEB1Rq6BgC7Sb/Bwj7AAwDbSQk6DQOKafRc/cD9B/3Czw4A/nOTg71+wzzBwQ8A/XlKwcEBgnzAdAMBwHoUAQ0AkID0wP3+/LX+" +
-                "DwETd5cFwXw6/8PAwMFszwCqcftAQEYJAGSTd4p/wQsAqZTFwEMBR/8LALKauMJ3PGvACQC6nMbALABFCwCynnSiwcM8wWAIAMyjw/47Pv4GAMSlgE7DC/7NqAz/Rk" +
-                "HXARpilsB4iHL+AWrD7QAYpZrCZgSLdYHAVg0AkrUxPP2+Rv8HAHu8osHCPm4GAJ28+vX/Bv5/wGJkBABax3J8DgDcyIn/B4PAgFvBBgDkydM+/OoAFOegccAEjMGH" +
-                "clkEAMP6SakJ/sr6Gvz/Kp4IEy9nzsHBwcFdEQOZ/9xAwCr/O//9AToFEF8DWgf+w/sRYwZWwU3IEMn2lsPFwcTEQMGW6gAR+6TBwATDajzCfP/Cwv1RCRNgDO38+v" +
-                "ojOxMTEQ6pwcORxAXEh3mBCBDNEDHmQQnulxJXksLDAcbF9hGbFFPDjA3FB+6xFV6pExHBFa48wYjDhpPCr8AH7vEXOk8DEDAXMgAFEGshUHjAENTLSD0XEREdaMHD" +
-                "fomCd8JyU8kQnry2/h31+/w6/Pj9EbFC18QD1bIgvfwZEQ5KsJDCf2yWiID/wYPGEPO1R8AYEORnDG2BP8LDwsPDwgfDwj/D/8HCwlKHABq9AAIBALQB40cD/wGoAT7" +
-                "IAMUZRqw=");
+            //FPBufferTest = zkfp2.Base64ToBlob("Sp9TUzIxAAAD3OEECAUHCc7QAAAj3WoBAABkgwEjYtzgAPxkkAB+AAm4OADZAGZkmAAX3QFkrADYAEtkjtyVAA" +
+            //                "lksgBkAIm4DgDkAOVkSQBM3VFSPQBzALVko9xaAVAzhwCXAPm4XwD9APpk+ADd3O9kfACtAMJkTNwOAVxkfgDkASy4xADcABlcZgAz3ThRXQBJARdhWdxv" +
+            //                "APlkEwD2AU+4awBYAPhkbwBU3AJPSQDuAKRkodzsAItkjwDIARy4jQCxAIVkuQCW3HtkJgCxACpkK9wnAU1kMwBAAPK4wAA2ATg6/QBZ3TBFpwBgAQAo8k" +
+            //                "PIBwoRKIfUBjXeQXpBByZu1KRC1pPRRQb5dlOG9ky4h9IEhoKjBl1fk4OX+G/6jAJJUA8aZYEJezp5S1LIAvYb/gRL+fDdyP7loiGb/Yq6UZf1hYQ5jlD+N" +
+            //                "oAAZt79LRMnMWEm7I7Wkh+TlwChNtsOHqK3hEqlYt8Ai/ILHQKSHiAv4AOCAPeJwwn809L/xXU5awD/yiJPbeZ2vfP/lY02LX+FgL1/wHBKqjP0wotfAHoB" +
+            //                "nt4f82seZYG/+9zY0wCjdKfp+2LwOgbmVHZWdL6MsGvm3QMgOAHHFRm0BgB8RW1KlwQDSEt3awUAo5J9ZtoBZFtxwFLOAMK7h/95Tl0KxV1tKz89XAMAO7d" +
+            //                "0wtgBPXdtPQ3FNIAx/j7/REwOxTaLKFL//v9dN8YALVV1wgcAkJLDN1nXAXmTfWnBBcP9pwIAkJgMwcIAeUV7am0RANlTkMOiwYFpWcASxduiTMFqwsH+ww" +
+            //                "XAfR2ABgCTsgaHwAjcirSDeMLBosAF3JO5Bv5bC8WKv1rDwXjCWQfFkr3QREsJAKvWVW+LHRAAwNmTagTBih1dwXAJAKgfifwdkGAGADfconjD2QGw3BbAN" +
+            //                "9YAAArd//1CRsD1wTsdEwDUuoxiBP/AtnWEwAsAYiX3/PT+OMAHADomZ8IdwGYHAE7sKP04IwgARu1nwb3Awx4KAGH59/47/y3hCABi/vr+O//9Iy8KEFoA" +
+            //                "awWXdhwEEIsKkKDQENTYn2nBwWyJOolnHQYQkwwX/vb+C8xND2SSgAjVkhL8/jAgCBBP1mCRHIwKEGET+jn9ICA/ChB4HIkBxcAfwMPEwQQQRSAjwRIQ1Rug" +
+            //                "wavCch7Dwm7C/8LCEH34LPz//DUF1WkkuMXEwQYQKe1QdB4EEHEsOiHBEG/vSDoEEKUz9S0HzBQ1SWAWEAglrh9ukMGdwMIH/8FVwRIQoVbDR5LHGMLDwJef" +
+            //                "DtVZa2zB/CT5+Pnm/VGeARJDAQEBxWwC7kwAABJFUg==");
+            ////zkfp2.DBMerge(mDBHandle, FPBufferTest, FPBufferTest, FPBufferTest, RegTmp, ref cbRegTmp);
+            //if (zkfp2.DBAdd(mDBHandle, iFid, FPBufferTest) == zkfp.ZKFP_ERR_OK)
+            //{
+            //    iFid += 1;
+            //}
+            //FPBufferTest = zkfp2.Base64ToBlob("Sr1TUzIxAAAD/v8ECAUHCc7QAAAj/2oBAABZgyMklP4BAfRkmQDVAVKadwDeAOhkHQA3/0hL8QAVAfI4ff69AGJkyABhAA" +
+            //    "+aswCcAHhkYwCR/v5kVgBAAYldA/9RATI0/wCzAI7AyAD7ACRkaAAc/0lenAC8AD5kjP60APNkYwDEAVuarABGAcpYaQBR/99QtwBZAb9Q8f5IATY19wCXAUbMjQC" +
+            //    "AAPVkBQBK/gFksAATAZJkov7HAG5kpwD9Acug3gDGAItRrgAd/01kggBBAfxMVv7nAOFkBwHeATLe/gA7ATUimABM/0lHYABdAfov1v5IAIBkyaRvnLVQ7Fw1/kkK1w" +
+            //    "lhd++SVhRCFtMWVvSn8n4GEXHnaGmDBJYKDp6CYHgakGN+nYgaDFP2ZvprDA4CxO4k/A4Dlg9bg4+Pe824InbsBPPV+kSDt3EYCAaYofg4ka54XwzWeP5yPe9m+uRR" +
+            //    "ZBe4Z5gbn2G0sba1dPOYBCr/NRboEwkSY/ikgsoFgYHjD153d+2wCsZkwHd0fp3z6ACBg/HvW4JElJYX6vSOApsXPYy78vLvzohT+YB92P6a/KP9bAGK+5jycQjp/O" +
+            //    "8S+gb39CYLgYHm91h9+7u7iQsg8AEB1Rq6BgC7Sb/Bwj7AAwDbSQk6DQOKafRc/cD9B/3Czw4A/nOTg71+wzzBwQ8A/XlKwcEBgnzAdAMBwHoUAQ0AkID0wP3+/LX+" +
+            //    "DwETd5cFwXw6/8PAwMFszwCqcftAQEYJAGSTd4p/wQsAqZTFwEMBR/8LALKauMJ3PGvACQC6nMbALABFCwCynnSiwcM8wWAIAMyjw/47Pv4GAMSlgE7DC/7NqAz/Rk" +
+            //    "HXARpilsB4iHL+AWrD7QAYpZrCZgSLdYHAVg0AkrUxPP2+Rv8HAHu8osHCPm4GAJ28+vX/Bv5/wGJkBABax3J8DgDcyIn/B4PAgFvBBgDkydM+/OoAFOegccAEjMGH" +
+            //    "clkEAMP6SakJ/sr6Gvz/Kp4IEy9nzsHBwcFdEQOZ/9xAwCr/O//9AToFEF8DWgf+w/sRYwZWwU3IEMn2lsPFwcTEQMGW6gAR+6TBwATDajzCfP/Cwv1RCRNgDO38+v" +
+            //    "ojOxMTEQ6pwcORxAXEh3mBCBDNEDHmQQnulxJXksLDAcbF9hGbFFPDjA3FB+6xFV6pExHBFa48wYjDhpPCr8AH7vEXOk8DEDAXMgAFEGshUHjAENTLSD0XEREdaMHD" +
+            //    "fomCd8JyU8kQnry2/h31+/w6/Pj9EbFC18QD1bIgvfwZEQ5KsJDCf2yWiID/wYPGEPO1R8AYEORnDG2BP8LDwsPDwgfDwj/D/8HCwlKHABq9AAIBALQB40cD/wGoAT7" +
+            //    "IAMUZRqw=");
+            ////zkfp2.DBMerge(mDBHandle, FPBufferTest, FPBufferTest, FPBufferTest, RegTmp, ref cbRegTmp);
+            //if (zkfp2.DBAdd(mDBHandle, iFid, FPBufferTest) == zkfp.ZKFP_ERR_OK)
+            //{
+            //    iFid += 1;
+            //}
+
+            //Add vân tay Công lấy từ hệ thống của cty để thử
+            //vân tay lưu trong DB của máy chấm công cty nó lư dạng số HEX của mảng Byte[], nên khi đọc về phải convert từ hex-->byte[]
+            //rồi mới chuyển sang base64 nếu cần.
+            FPBufferTest = ConvertHex2ByteArray("0x4AD75353323100000394970408050709CED000001B95690100000083B91D64944200FC0F4E008300779B41005600F20F4F006D947D0E99006F00C90EBC947F008D0F8A00420000999B008800830EF3008994F10F9B009700C80EBB94B2008E0FCA007A001F9BAD00CB008D0FAC00D594FF0F9600EA00E40E5894ED005C0F69003700069A8500FE002F0EF7000195510F19000C01960F71940E014E0EAB00CA013A9BCB001501340FA0002F95D10E94002F01950F42943401330FA600FE014D9B1F004A013A0FAD004C959F0F018AF20F6E826A11087A27FB6D81BBFBD4910870457A2EF83C90B61ECC0B6A0E86829B8382149CFA3D8A3D784480BEEE5A015F7F93EFF48C129A33020D7645035782FE06D7900313C90323704DFAD8A7C5FBABD078F739028FEB3558FD638B130E3C3C0B8ED8B5E2F413E5B8A0FF1FF4671DD8074CB66A1B1522E64843805190A3EAF61BD6FC6AE9B8738384EE352A9D8C06098ED2044665BAFAA294CE96FB17131D320AC2EB480BA3D17F6CCB52DFC2159121360102161C521B02830A436B58C15505C0C354C0515864C004C5732CE04E0700A33886065FC29C016A42FDC1339E0C03D154EDFE3E3857CA002CF5F5FFC14B3D53870903126A80776FFF07C59D6E922E590F002C6F283E4669543E07008771BFC0C1CD02009D730CC0D500DDE8926A8577C07705120375908CFEC3FFC04378C354C1C1A607009F510C56AC0A009797867905C2C3F606009F9A0F4A811103729D90C1526C690574C28501E1A39064C101FD7656FEC3520900B57690725689060046B669BDC008946FBBF7FEFCC13B41449A014EBCED3DFD38C05D6AC0FF060046BFA276FC910173C0FDFE3AC90072557BC3C0C367C03B980094CEC11AFF120022CA9D57C15AC09680FF076508946CD6F7FDFF313BFF34910192E7909F08C59AE983FCC0FEFD3014C5E3E9366BC26D9F59778F0A03C3ED62C28B84C3CF0059645D8477940B005DF01DA7FEFD3FFD0C00ABF1F96EFF2433340A0045FB8A248C96110035FE12FEFCAAFDFEFFFEC0FD84FE079489FE22211C1040022E682FFEFFFBFAFA3BFEF854FFFEFFFFFCFC3EFFFE6AFCFFFE1810DAC6B49A027BC287C270C39FC20B842C055370C272CD10309251C169900510B00B772104107A0C3DFDEC0313831053C10710ACD7342AAC0510741346FD3A061304325030F8051053334A6AFFFF0510403AF5C0B09011A23F4CFEC0C610ABAB48FE1810C8330583911683C1C2C2C2C004C1C2180E0070FF67C35AC2CB58C09FC3C8");            
             //zkfp2.DBMerge(mDBHandle, FPBufferTest, FPBufferTest, FPBufferTest, RegTmp, ref cbRegTmp);
             if (zkfp2.DBAdd(mDBHandle, iFid, FPBufferTest) == zkfp.ZKFP_ERR_OK)
             {
                 iFid += 1;
             }
 
-            //dat
-            FPBufferTest = zkfp2.Base64ToBlob("SxtTUzIxAAACWFsECAUHCc7QAAAaWWkBAAAAgoUKf1h7AAcOkQC4AIVWeACeAIEPkgCqWP4PwgC2AOYPbVjWAHoPMgAvAF" +
-                "ZXyAD1ACsPpwD/WFoORwAgAfoPg9m/idcLgYGTCmHTd4XGfdr+s4Gt3V77m/sDnyqnVHq2fc/7P/maFyGHEgvns9fTM+KAR7YJHufz79LHRlghLQEBwBVqBQL5GBDAW" +
-                "QcAaSgNHz8JAJ0wBjvA/WbBCwCVOAk6RlVvDQCDQQbAOv7CmEdCDQCES8Y1w25AwQQAQ2AoKwlYlVgJPv//BP4/XAFCaPRBCcWQYFTBwPzC/v0ECgLYawZA/0bAwQAw" +
-                "2vE4CgBwdTj//gb+UwQAMog/wv1TAWx+A/7BOv5CDwUAMpPwOM4Abt8H/0Y3QgfFdZjbeHMRADKeLv45psHB/f/+/zpdCVh8nwn/Kf4EwEBdAWOgd28NxXCqWPz//URRR" +
-                "MEAx+EhRgUAK8Ei/ytVAXCvBv7+OjXCpsBKBgAi1Rv+/WkNAGi3AyoF/UgcCQBq1n3DB8OGXgAG2T1M/8AAJYPhMw4AZL7G/cKkwf3B/sHAOn8TWDTn3v7+/j7+K6fB/sH" +
-                "AbxTFGe6vxv7///39O///d01zBAAy7pZ9BljK+SlGCQCb/2CcnMGDCRBoxxf5HcBsCBBmCeH9ZCsGEFoNTMS0wgpIYA5GicLBBAcSPxc3aYMGEIMjQibDFhAwPcD4Mf+kw" +
-                "fn+/v//BcDCmWsVEDtOt/D//Kb8/vz6/S+hbxZIRl20//8wOvz/o/j+/v/BwARl");
-            //zkfp2.DBMerge(mDBHandle, FPBufferTest, FPBufferTest, FPBufferTest, RegTmp, ref cbRegTmp);
-            if (zkfp2.DBAdd(mDBHandle, iFid, FPBufferTest) == zkfp.ZKFP_ERR_OK)
-            {
-                iFid += 1;
-            }
-            //Thi
-            FPBufferTest = zkfp2.Base64ToBlob("S59TUzIxAAAC3OEECAUHCc7QAAAa3WkBAAAAggEVsNwZABkPYACBAPjThgBaAHwPegBZ3J0PWAB5AJcPv9x/AKMPmABHAIvTMwCNAE" +
-                "sPjQCd3EQP0wCmAPwPgNy/ACUPygADAETTnADIAK0PYQDW3KIPrgDlAEwPfdztABcOvwA+AOPSYgD9ACIPUwAJ3Y8PgwAMAcMPgNwgAZ4Po38Gn9X/n4PPqqtz8/eYWwbiKvlH" +
-                "FqIigNKfC/daogmfHQmw9+mqD9vulAsgJw5T2f8O9pYjlCj2mLOPaXuzhp3MBwyuppq/OAxjV/8lifgJHbOCozUcq6LdphAT9JBWRFsSV0tAjwxwwYKEcYlS8F96e6W8aTbwpZkHE" +
-                "IWgf7AdICkBxL8a2QoASQf9ZTvBaR0GAKMMEMI5wf8jBwC1GRpHOhAC4hztNf88/olEEtw5LOkzSvwF/v0c/kMIAGRAMf7/7P4IAFxGaQf/wB5dEQBnRvfmPf8j/sDAwf091gAol" +
-                "N87/sD+//X//Ig3FAArVOCDMTYd/P84ShAARlaBfMCMwsD+gwcQAhxWoHzDecIEb5rZAYtaEP8p0wCGgYGdw4xmfAXEwqjDCADCXykF/0YcFABcdef/OP0h7/4z/yAXEsVUe4t/w" +
-                "nHAw4G2wxHcv3qrwsKLXpPDrH4PAFh9UENZgrLDEACWfpd1w8AfbXGFCQC/Ry39I//AwioPAFGDjh/Hw8TBwsIFwsIew8EHAJuG4jsr2gExkEzB/0oEAlqYJDEQAEdmRnodgsDCe" +
-                "ZQExYah7IAHANSpOgXAwhz4JACDwisGwscbx8OLw4bDAMHHTn/BwnVwo8wAyBVB/f39/P7eBQJ81JcjCAB6Z0PBHMLDwcUMAETeq/L+/Pj3/DPKAKtgtozExsbFB8KKHAcAf/Ainw" +
-                "EGAuz4KcDCWQXFz/m8/S8DACn76MEGzGUAInMHEAoFZSIo/QUQvx+o/S3c");
-            //zkfp2.DBMerge(mDBHandle, FPBufferTest, FPBufferTest, FPBufferTest, RegTmp, ref cbRegTmp);
-            if (zkfp2.DBAdd(mDBHandle, iFid, FPBufferTest) == zkfp.ZKFP_ERR_OK)
-            {
-                iFid += 1;
-            }
-            //Tuan
-            FPBufferTest = zkfp2.Base64ToBlob("TQVTUzIxAAAERkYECAUHCc7QAAAcR2kBAAAAhOskmUYhAHgOjQDhAPlIygAtAIgPTAAxRgUOlQBHAL4PZ0ZLAP4OdACOAHhIswBOAAkPugBL" +
-                "RvoOqwBSAEQPxkZfAA0PPwChAGVJhQBtAHEPHwBzRh0PmQCTAL0PEkaVAFsP5ABcACpJswCaACcPCwClRi8PhQCtAJQOXEazAEoPpgABAE9IwwDTAEsPJwDbRkAPLwDkAIcPx0byAFcP" +
-                "2QA+AEpJMQD/AMIPhQAFRzgPcQAIAdIPjEYbAfwPGwDgAbdJPgA0Aa8PSgAwR44PpgA9ASsPPkZLAZ8PgXysd1a4eITN+LqFk4KDVlYIRQiliggLqTx4ghn+hYRMB2q5FYOJgOZ4JYqd" +
-                "uAOQFIN5gpD77DyUChV3FQbMj5K3B2cP538LD3i6sOP7BhGa8XfzERVnKLYLA//+E19dxAIKFdMJILNhvaffRQLdC9sXDp5LCq4LMvtSCyORSwDO/gInDwByskcNjffO+W/tecVrCR/7" +
-                "OQovDBZfwPoBD98EAIh5xRcTzXjy+YokgVny4JOJuW/k569W3wai8/MU2BJmuJJ5AaKpl155JSQ29DfbrfJC7KMtTNp0tQ0g/wEGNSCRBAB7BkVZA0aBDXpwWQzFmRrGd3Z6wgQAZCECe" +
-                "w8AzSKQwgRfcxPBEgDHMImqZnCGh8DAwQcASDP5eDgMAIU0er3AxYaGwAgAjjnFQ/omBABxTnrDqQQExE8Awf4FAHJODbk+AwCvUw8HEgTuVIDAwIaABcL6OHsUAOtalgSExBSSwWZrBQA" +
-                "AYAiGMAYAOmRkrsABRj9oYMFJEsWAaDySwnHAa4RLCwTObADAMvvBjhkExnB0w2eLcqn/x4eSwcCcAwAYeB65GwD3hKKTiMHEhsDEccHAwgVixSgTAJWQgMRewvuCW8PBwsGlwwCZ1RL8" +
-                "MCgAlFB6m859wZHEwMYHiMeGw4TCwMOTWsGTQgEXmlzBwsEA4NomOBEAtp3h/vt3/sAn/v366RIEjZyeiMLBlwTCxYd3wh4A955sf5SHw2rEwIvBBcL7hP7AwcP/n80A1uQoNUcHAM5gMD" +
-                "lzHQCCslfDB5XBgKbDw8HCxAbGx4XCwsDDwsEFBATTtSf6/RAAkbZLhFfE/8LBnQGOEUZbtkx4gZMBw4mGw8DEwQQAVLdN0AUAjLlQn+cAofmqxsrFxMIGxcKBxcTDwsPEAMbHgsPBw8HC" +
-                "xAHGxYPDwcIDAKkCQ/leAfPLsWTDvIDE34h+fAoAxRJGLbv/+//6AwAn5ES5BxDfEEz9ODgDRirnQ3ChHsXw5/uCesCXhsJJfMU0/sKSBgDDMlbEuv/8BxDbAoz++XUPED0EQJIHwmjSww" +
-                "8QQwQ6B8GWhsKTwMHDB9UEFnbCa8IEEB/sJFhBEQcrJMFpBgMURC00wQQQQ/0egEUREEAiwgXVr2Q7VAA=");
-            //zkfp2.DBMerge(mDBHandle, FPBufferTest, FPBufferTest, FPBufferTest, RegTmp, ref cbRegTmp);
-            if (zkfp2.DBAdd(mDBHandle, iFid, FPBufferTest) == zkfp.ZKFP_ERR_OK)
-            {
-                iFid += 1;
-            }
+            var b2h=ConvertByteArray2Hex(FPBufferTest);
 
             cbRegTmp = 100;
+        }
+
+        private byte[] ConvertHex2ByteArray(string hexString)
+        {
+            // Chuỗi hex cần chuyển đổi
+            //string hexString = "4AD75353323100000394970408050709CED000001B95690100000083B91D64944200FC0F4E008300779B41005600F20F4F006D947D0E99006F00C90EBC947F008D0F8A00420000999B008800830EF3008994F10F9B009700C80EBB94B2008E0FCA007A001F9BAD00CB008D0FAC00D594FF0F9600EA00E40E5894ED005C0F69003700069A8500FE002F0EF7000195510F19000C01960F71940E014E0EAB00CA013A9BCB001501340FA0002F95D10E94002F01950F42943401330FA600FE014D9B1F004A013A0FAD004C959F0F018AF20F6E826A11087A27FB6D81BBFBD4910870457A2EF83C90B61ECC0B6A0E86829B8382149CFA3D8A3D784480BEEE5A015F7F93EFF48C129A33020D7645035782FE06D7900313C90323704DFAD8A7C5FBABD078F739028FEB3558FD638B130E3C3C0B8ED8B5E2F413E5B8A0FF1FF4671DD8074CB66A1B1522E64843805190A3EAF61BD6FC6AE9B8738384EE352A9D8C06098ED2044665BAFAA294CE96FB17131D320AC2EB480BA3D17F6CCB52DFC2159121360102161C521B02830A436B58C15505C0C354C0515864C004C5732CE04E0700A33886065FC29C016A42FDC1339E0C03D154EDFE3E3857CA002CF5F5FFC14B3D53870903126A80776FFF07C59D6E922E590F002C6F283E4669543E07008771BFC0C1CD02009D730CC0D500DDE8926A8577C07705120375908CFEC3FFC04378C354C1C1A607009F510C56AC0A009797867905C2C3F606009F9A0F4A811103729D90C1526C690574C28501E1A39064C101FD7656FEC3520900B57690725689060046B669BDC008946FBBF7FEFCC13B41449A014EBCED3DFD38C05D6AC0FF060046BFA276FC910173C0FDFE3AC90072557BC3C0C367C03B980094CEC11AFF120022CA9D57C15AC09680FF076508946CD6F7FDFF313BFF34910192E7909F08C59AE983FCC0FEFD3014C5E3E9366BC26D9F59778F0A03C3ED62C28B84C3CF0059645D8477940B005DF01DA7FEFD3FFD0C00ABF1F96EFF2433340A0045FB8A248C96110035FE12FEFCAAFDFEFFFEC0FD84FE079489FE22211C1040022E682FFEFFFBFAFA3BFEF854FFFEFFFFFCFC3EFFFE6AFCFFFE1810DAC6B49A027BC287C270C39FC20B842C055370C272CD10309251C169900510B00B772104107A0C3DFDEC0313831053C10710ACD7342AAC0510741346FD3A061304325030F8051053334A6AFFFF0510403AF5C0B09011A23F4CFEC0C610ABAB48FE1810C8330583911683C1C2C2C2C004C1C2180E0070FF67C35AC2CB58C09FC3C8";
+
+            // Bỏ "0x" nếu có trong chuỗi
+            if (hexString.StartsWith("0x"))
+            {
+                hexString = hexString.Substring(2);
+            }
+
+            // Chuyển chuỗi hex sang mảng byte
+            byte[] bytes = new byte[hexString.Length / 2];
+            for (int i = 0; i < hexString.Length; i += 2)
+            {
+                bytes[i / 2] = Convert.ToByte(hexString.Substring(i, 2), 16);
+            }
+
+            return bytes;
+        }
+
+        private string ConvertByteArray2Hex(byte[] bytes)
+        {
+            //byte[] bytes = { 0x4A, 0xD7, 0x53, 0x53, 0x23, 0x31, 0x00, 0x00 };
+
+            StringBuilder hex = new StringBuilder(bytes.Length * 2);
+            foreach (byte b in bytes)
+            {
+                hex.AppendFormat("{0:X2}", b);
+            }
+
+            string hexString = hex.ToString();
+           return hexString;
         }
     }
 }
